@@ -1,0 +1,5 @@
+H:\IT-368-485-Fall-Project\LinkedU\LinkedU\bin\LinkedU.dll
+H:\IT-368-485-Fall-Project\LinkedU\LinkedU\bin\LinkedU.pdb
+H:\IT-368-485-Fall-Project\LinkedU\LinkedU\obj\Debug\LinkedU.csprojResolveAssemblyReference.cache
+H:\IT-368-485-Fall-Project\LinkedU\LinkedU\obj\Debug\LinkedU.dll
+H:\IT-368-485-Fall-Project\LinkedU\LinkedU\obj\Debug\LinkedU.pdb
