@@ -14,7 +14,13 @@
     <form id="form1" runat="server">
 	<div class="banner">
 		<div class="container">
-			<a href="index.htm"><img src="images/logo.png"></a>
+            <div class="col-lg-6 col-md-6">
+    			<asp:HyperLink ID="LogoHome" NavigateUrl="~/Default.aspx" runat="server"><img src="images/logo.png"></asp:HyperLink>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <!-- Put Quick Search Here -->
+                <h2>Quick Search</h2>
+            </div>
 		</div>
 	</div>
 	<div class="banner">
@@ -30,7 +36,7 @@
 				</div>
 				<div class="collapse navbar-collapse" id="project-navbar">
 					<ul class="nav navbar-nav">
-						<li><a href="index.htm">Home</a></li>
+						<li><asp:HyperLink ID="MenuHome" NavigateUrl="~/Default.aspx" runat="server">Home</asp:HyperLink></li>
 						<li><a href="#">Search</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span></a>
