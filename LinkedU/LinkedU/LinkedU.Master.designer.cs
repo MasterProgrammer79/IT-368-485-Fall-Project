@@ -40,6 +40,24 @@ namespace LinkedU {
         protected global::System.Web.UI.WebControls.HyperLink LogoHome;
         
         /// <summary>
+        /// QuickSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox QuickSearch;
+        
+        /// <summary>
+        /// SubmitQuickSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SubmitQuickSearch;
+        
+        /// <summary>
         /// MenuHome control.
         /// </summary>
         /// <remarks>
@@ -47,6 +65,15 @@ namespace LinkedU {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink MenuHome;
+        
+        /// <summary>
+        /// LoginOrSignUp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel LoginOrSignUp;
         
         /// <summary>
         /// Login control.
@@ -65,6 +92,33 @@ namespace LinkedU {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink SignUp;
+        
+        /// <summary>
+        /// LoggedInUser_MenuBar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel LoggedInUser_MenuBar;
+        
+        /// <summary>
+        /// LoggedInFirstName_MenuBar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LoggedInFirstName_MenuBar;
+        
+        /// <summary>
+        /// Logout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton Logout;
         
         /// <summary>
         /// ContentPlaceHolder1 control.

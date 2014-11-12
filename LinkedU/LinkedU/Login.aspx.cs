@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -12,7 +13,13 @@ namespace LinkedU
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                if (HttpContext.Current.Session["userID"] != null)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+            }
         }
 
         protected void UserLogin_Click(object sender, EventArgs e)
@@ -29,54 +36,82 @@ namespace LinkedU
                     string user = Username.Text;
                     string pass = Password.Text;
                     bool login = false;
-                    SqlConnection dbConnection = new SqlConnection("");
+                    SqlConnection dbConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["ProjectDB"].ConnectionString);
                     try
                     {
                         dbConnection.Open();
-                        SqlCommand checkUsername = new SqlCommand("SELECT *username* FROM *table* WHERE *username* = '" + user + "'", dbConnection);
-                        SqlDataReader queryReader = checkUsername.ExecuteReader();
-                        if (!queryReader.Read())
+                        string userQuery = "select userName from userDetails where userName = @uname";
+                        try
                         {
-                            queryReader.Close();
-                            LoginError.Attributes.Remove("style");
-                            LoginError.Attributes.Add("style", "display:block");
-                            ErrorMessage.Text = "<strong>Error!</strong> Invalid Username / Password Combination!";
-                        }
-                        else
-                        {
-                            queryReader.Close();
-                            SqlCommand checkLogin = new SqlCommand("SELECT *pwd* FROM *table* WHERE *username* = '" + user + "' and Pwd = '" + pass + "'", dbConnection);
-                            queryReader = checkLogin.ExecuteReader();
+                            SqlCommand checkUsername = new SqlCommand(userQuery, dbConnection);
+                            checkUsername.Parameters.Add(new SqlParameter("@uname", user));
+                            SqlDataReader queryReader = checkUsername.ExecuteReader();
                             if (!queryReader.Read())
                             {
+                                queryReader.Close();
                                 LoginError.Attributes.Remove("style");
                                 LoginError.Attributes.Add("style", "display:block");
-                                ErrorMessage.Text = "<strong>Error!</strong> Incorrect Username / Password Combination!";
+                                ErrorMessage.Text = "<strong>Error!</strong> Invalid Username / Password Combination!";
                             }
                             else
                             {
-                                LoginSuccess.Attributes.Remove("style");
-                                LoginSuccess.Attributes.Add("style", "display:block");
-                                SuccessMessage.Text = "<strong>Success!</strong> Login Successful!";
-                                login = true;
+                                queryReader.Close();
+                                string passQuery = "select userPassword from userDetails where userName = @uname and userPassword = @upass";
+                                try
+                                {
+                                    SqlCommand checkLogin = new SqlCommand(passQuery, dbConnection);
+                                    checkLogin.Parameters.Add(new SqlParameter("@uname", user));
+                                    checkLogin.Parameters.Add(new SqlParameter("@upass", pass));
+                                    queryReader = checkLogin.ExecuteReader();
+                                    if (!queryReader.Read())
+                                    {
+                                        LoginError.Attributes.Remove("style");
+                                        LoginError.Attributes.Add("style", "display:block");
+                                        ErrorMessage.Text = "<strong>Error!</strong> Incorrect Username / Password Combination!";
+                                    }
+                                    else
+                                    {
+                                        LoginSuccess.Attributes.Remove("style");
+                                        LoginSuccess.Attributes.Add("style", "display:block");
+                                        SuccessMessage.Text = "<strong>Success!</strong> Login Successful!";
+                                        login = true;
+                                    }
+                                    queryReader.Close();
+                                    if (login)
+                                    {
+                                        string query = "select userID from userDetails where userName = @uname";
+                                        try
+                                        {
+                                            SqlCommand getName = new SqlCommand(query, dbConnection);
+                                            getName.Parameters.Add(new SqlParameter("@uname", user));
+                                            SqlDataReader readQuery = getName.ExecuteReader();
+                                            readQuery.Read();
+                                            Session["userID"] = readQuery.GetString(0);
+                                            readQuery.Close();
+                                            Response.Redirect("Default.aspx");
+                                        }
+                                        catch (SqlException e3)
+                                        {
+                                            Response.Write("<p>Error Code " + e3.Number + ": " + e3.Message + "</p>");
+                                        }
+                                    }
+                                }
+                                catch (SqlException e2)
+                                {
+                                    Response.Write("<p>Error Code " + e2.Number + ": " + e2.Message + "</p>");
+                                }
                             }
-                            queryReader.Close();
-                            if (login)
-                            {
-                                /*SqlCommand getName = new SqlCommand("SELECT FirstName, LastName from UserData where Username = '" + user + "'", dbConnection);
-                                SqlDataReader readQuery = getName.ExecuteReader();
-                                readQuery.Read();
-                                Session["id"] = readQuery.GetString(0) + " " + readQuery.GetString(1);
-                                readQuery.Close();*/
-                                Response.Redirect("Default.aspx");
-                            }
+                        }
+                        catch (SqlException e1)
+                        {
+                            Response.Write("<p>Error Code " + e1.Number + ": " + e1.Message + "</p>");
                         }
                         dbConnection.Close();
                     }
                     catch (SqlException ex)
                     {
                         Response.Write("<p>Error Code " + ex.Number + ": " + ex.Message + "</p>");
-                    }*/
+                    }
                 }
             }
         }
