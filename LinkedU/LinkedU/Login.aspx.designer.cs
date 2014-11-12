@@ -22,33 +22,6 @@ namespace LinkedU {
         protected global::System.Web.UI.WebControls.Panel LoginError;
         
         /// <summary>
-        /// ErrorMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ErrorMessage;
-        
-        /// <summary>
-        /// LoginSuccess control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel LoginSuccess;
-        
-        /// <summary>
-        /// SuccessMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SuccessMessage;
-        
-        /// <summary>
         /// Username control.
         /// </summary>
         /// <remarks>

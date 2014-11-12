@@ -31,8 +31,6 @@ namespace LinkedU
                 {
                     LoginError.Attributes.Remove("style");
                     LoginError.Attributes.Add("style", "display:none");
-                    LoginSuccess.Attributes.Remove("style");
-                    LoginSuccess.Attributes.Add("style", "display:none");
                     string user = Username.Text;
                     string pass = Password.Text;
                     bool login = false;
@@ -51,7 +49,6 @@ namespace LinkedU
                                 queryReader.Close();
                                 LoginError.Attributes.Remove("style");
                                 LoginError.Attributes.Add("style", "display:block");
-                                ErrorMessage.Text = "<strong>Error!</strong> Invalid Username / Password Combination!";
                             }
                             else
                             {
@@ -67,13 +64,9 @@ namespace LinkedU
                                     {
                                         LoginError.Attributes.Remove("style");
                                         LoginError.Attributes.Add("style", "display:block");
-                                        ErrorMessage.Text = "<strong>Error!</strong> Incorrect Username / Password Combination!";
                                     }
                                     else
                                     {
-                                        LoginSuccess.Attributes.Remove("style");
-                                        LoginSuccess.Attributes.Add("style", "display:block");
-                                        SuccessMessage.Text = "<strong>Success!</strong> Login Successful!";
                                         login = true;
                                     }
                                     queryReader.Close();
@@ -86,7 +79,7 @@ namespace LinkedU
                                             getName.Parameters.Add(new SqlParameter("@uname", user));
                                             SqlDataReader readQuery = getName.ExecuteReader();
                                             readQuery.Read();
-                                            Session["userID"] = readQuery.GetString(0);
+                                            HttpContext.Current.Session["userID"] = readQuery.GetInt32(0);
                                             readQuery.Close();
                                             Response.Redirect("Default.aspx");
                                         }

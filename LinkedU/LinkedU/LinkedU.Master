@@ -3,27 +3,23 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
     <form id="form1" runat="server">
 	<div class="banner">
 		<div class="container">
-            <div class="col-lg-6 col-md-6">
-    			<asp:HyperLink ID="LogoHome" NavigateUrl="~/Default.aspx" runat="server"><img src="images/logo.png"></asp:HyperLink>
+            <div class="logo">
+    			<asp:HyperLink ID="LogoHome" NavigateUrl="~/Default.aspx" runat="server"><img src="images/logo.png" /></asp:HyperLink>
             </div>
-            <div class="col-lg-6 col-md-6">
-                <form role="search">
-                    <div class="form-group">
-                        <asp:TextBox ID="QuickSearch" CssClass="form-control" placeholder="Search" runat="server" />
-                    </div>
-                    <asp:Button ID="SubmitQuickSearch" Text="Submit" runat="server" OnClick="SubmitQuickSearch_Click" />
-                </form>
+            <div class="quick-search">
+                <asp:TextBox ID="QuickSearch" placeholder="Search" CssClass="form-control quick-search-bar" runat="server" />
+                <asp:Button ID="SubmitQuickSearch" Text="Submit" CssClass="btn btn-primary quick-search-button" runat="server" OnClick="SubmitQuickSearch_Click" />
             </div>
 		</div>
 	</div>
@@ -58,25 +54,25 @@
 							</ul>
 						</li>
 					</ul>
-					<ul class="nav navbar-nav navbar-right">
-                        <asp:Panel ID="LoginOrSignUp" runat="server">
+                    <asp:Panel ID="LoginOrSignUp" runat="server">
+                        <ul class="nav navbar-nav navbar-right">
                             <li><asp:HyperLink ID="Login" NavigateUrl="~/Login.aspx" runat="server">Login</asp:HyperLink></li>
 						    <li><asp:HyperLink ID="SignUp" NavigateUrl="~/SignUp.aspx" runat="server">Sign Up</asp:HyperLink></li>
-                        </asp:Panel>
-						<asp:Panel ID="LoggedInUser_MenuBar" runat="server" style="display:none">
+                        </ul>
+                    </asp:Panel>
+					<asp:Panel ID="LoggedInUser_MenuBar" runat="server" style="display:none">
+                        <ul class="nav navbar-nav navbar-right">
                             <li>Hi, <asp:Label ID="LoggedInFirstName_MenuBar" runat="server" /></li>
                             <li><asp:LinkButton ID="Logout" runat="server" Text="Logout" OnClick="Logout_Click" /></li>
-						</asp:Panel>
-					</ul>
+                        </ul>
+					</asp:Panel>
 				</div>
 			</nav>
 		</div>
 	</div>
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
-        </asp:ContentPlaceHolder>
-    </div>
+    </asp:ContentPlaceHolder>
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

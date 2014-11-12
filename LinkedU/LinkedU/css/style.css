@@ -29,11 +29,17 @@ body {
 	color:#f0f0f0;
 }
 .navbar-default .navbar-nav>li>a:hover {
-	background-color: #e7e7e7;
+    color: #f0f0f0;
+	background-color: #4472c4;
 }
 .navbar-default .navbar-nav>.active>a {
 	color: #fff;
 	background-color: #454545;
+}
+.form-control {
+    display: inline-block;
+    width: auto;
+    border: 1px solid #666;
 }
 /* End Bootstrap Overrides */
 .banner {
@@ -58,28 +64,53 @@ body {
 	margin-top: 10px;
 	background-color: #fff;
 }
+.logo,.quick-search-bar,.quick-search-button,.full,.big-left,.small-right,.small-left,.big-right,.sign-up-panel-1,.sign-up-panel-2 {
+    float: left;
+}
+.quick-search {
+    float: right;
+    display: block;
+    height: 60px;
+    width: 40%;
+    padding: 13px 0px;
+}
+.quick-search-bar {
+    float: left;
+    width: 75%;
+}
+.quick-search-button {
+    float: left;
+    width: 23%;
+    margin-left: 2%;
+}
+@media (max-width:767px)
+{
+    .logo {
+        float: none;
+        text-align: center;
+    }
+    .quick-search {
+        display: none;
+    }
+}
 .full {
 	width: 100%;
 }
-.big-left {
-	float: left;
+.big-left,.big-right {
 	width: 69%;
 }
-.small-right {
-	float: left;
-	margin-left: 1%;
+.small-left,.small-right {
 	width: 30%;
 }
-.small-left {
-	float: left;
-	width: 30%;
-}
-.big-right {
-	float: left;
+.big-right,.small-right {
 	margin-left: 1%;
-	width: 69%;
 }
-.login, .login-form {
+.menubar-name {
+    padding: 14px 15px;
+    color: #ff0000;
+    font-weight: bold;
+}
+.login,.login-form {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -89,4 +120,17 @@ body {
 }
 .login-form {
     width: 600px;
+}
+.sign-up-panel-1,.sign-up-panel-2 {
+    display: block;
+    width: 49%;
+}
+.sign-up-form {
+    display: block;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.sign-up-panel-2 {
+    margin-left: 2%;
 }

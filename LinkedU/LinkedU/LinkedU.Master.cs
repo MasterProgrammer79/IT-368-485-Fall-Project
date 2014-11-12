@@ -11,13 +11,6 @@ namespace LinkedU
 {
     public partial class LinkedU : System.Web.UI.MasterPage
     {
-        public SqlConnection dbConnection;
-
-        public LinkedU()
-        {
-            dbConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["ProjectDB"].ConnectionString);
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -44,6 +37,8 @@ namespace LinkedU
 
         protected string getFirstName()
         {
+            SqlConnection dbConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["ProjectDB"].ConnectionString);
+            int uid = Convert.ToInt32(HttpContext.Current.Session["userID"]);
             string firstname = "";
             try
             {
@@ -52,9 +47,10 @@ namespace LinkedU
                 try
                 {
                     SqlCommand getType = new SqlCommand(query, dbConnection);
-                    getType.Parameters.Add(new SqlParameter("@uid", HttpContext.Current.Session["userID"]));
+                    getType.Parameters.Add(new SqlParameter("@uid", uid));
                     SqlDataReader reader = getType.ExecuteReader();
                     string nameQuery = "";
+                    reader.Read();
                     if (reader.GetString(0).Equals("student"))
                     {
                         nameQuery = "select firstName from studentPersonal where userID = @uid";
@@ -67,8 +63,9 @@ namespace LinkedU
                     try
                     {
                         SqlCommand getName = new SqlCommand(nameQuery, dbConnection);
-                        getType.Parameters.Add(new SqlParameter("@uid", HttpContext.Current.Session["userID"]));
+                        getName.Parameters.Add(new SqlParameter("@uid", uid));
                         SqlDataReader nameReader = getName.ExecuteReader();
+                        nameReader.Read();
                         firstname = nameReader.GetString(0);
                         nameReader.Close();
                     }
