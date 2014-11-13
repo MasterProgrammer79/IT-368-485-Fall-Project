@@ -26,7 +26,8 @@ namespace LinkedU
 
         protected void SubmitQuickSearch_Click(object sender, EventArgs e)
         {
-
+            string quickSearch = QuickSearch.Text;
+            Response.Redirect("QuickSearchDisplay.aspx?quickSearchTerm=" + quickSearch);
         }
 
         protected void Logout_Click(object sender, EventArgs e)
