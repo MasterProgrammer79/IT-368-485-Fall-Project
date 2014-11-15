@@ -20,9 +20,8 @@
             <div class="quick-search">
                 <asp:TextBox ID="QuickSearch" placeholder="Search" CssClass="form-control quick-search-bar" runat="server" />
                 <asp:Button ID="SubmitQuickSearch" Text="Submit" CssClass="btn btn-primary quick-search-button" runat="server" OnClick="SubmitQuickSearch_Click" />
-            <br /><asp:HyperLink ID="AdvanceSearch" NavigateUrl="~/AdvanceSearchForm.aspx" runat="server">Advanced Search</asp:HyperLink>
-               
-                 </div>
+                <br /><asp:HyperLink ID="AdvanceSearch" NavigateUrl="~/AdvanceSearchForm.aspx" runat="server">Advanced Search</asp:HyperLink>
+            </div>
 		</div>
 	</div>
 	<div class="banner">
@@ -64,7 +63,7 @@
                     </asp:Panel>
 					<asp:Panel ID="LoggedInUser_MenuBar" runat="server" style="display:none">
                         <ul class="nav navbar-nav navbar-right">
-                            <li>Hi, <asp:Label ID="LoggedInFirstName_MenuBar" CssClass="menubar-name" runat="server" /></li>
+                            <li class="menubar-name">Hi, <asp:Label ID="LoggedInFirstName_MenuBar" runat="server" /></li>
                             <li><asp:LinkButton ID="Logout" runat="server" Text="Logout" OnClick="Logout_Click" /></li>
                         </ul>
 					</asp:Panel>
