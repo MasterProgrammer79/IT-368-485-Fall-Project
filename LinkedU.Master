@@ -1,0 +1,82 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="LinkedU.master.cs" Inherits="LinkedU.LinkedU" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+	<div class="banner">
+		<div class="container">
+            <div class="logo">
+    			<asp:HyperLink ID="LogoHome" NavigateUrl="~/Default.aspx" runat="server"><img src="images/logo.png" /></asp:HyperLink>
+            </div>
+            <div class="quick-search">
+                <asp:TextBox ID="QuickSearch" placeholder="Search" CssClass="form-control quick-search-bar" runat="server" />
+                <asp:Button ID="SubmitQuickSearch" Text="Submit" CssClass="btn btn-primary quick-search-button" runat="server" OnClick="SubmitQuickSearch_Click" />
+            <br /><asp:HyperLink ID="AdvanceSearch" NavigateUrl="~/AdvanceSearchForm.aspx" runat="server">Advanced Search</asp:HyperLink>
+               
+                 </div>
+		</div>
+	</div>
+	<div class="banner">
+		<div class="container">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="container-fluid">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#project-navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="project-navbar">
+					<ul class="nav navbar-nav">
+						<li><asp:HyperLink ID="MenuHome" NavigateUrl="~/Default.aspx" runat="server">Home</asp:HyperLink></li>
+						<li><a href="#">Search</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">View</a></li>
+								<li><a href="#">Edit</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">General Settings</a></li>
+								<li><a href="#">Privacy Settings</a></li>
+								<li><a href="#">Profile Settings</a></li>
+							</ul>
+						</li>
+					</ul>
+                    <asp:Panel ID="LoginOrSignUp" runat="server">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><asp:HyperLink ID="Login" NavigateUrl="~/Login.aspx" runat="server">Login</asp:HyperLink></li>
+						    <li><asp:HyperLink ID="SignUp" NavigateUrl="~/SignUp.aspx" runat="server">Sign Up</asp:HyperLink></li>
+                        </ul>
+                    </asp:Panel>
+					<asp:Panel ID="LoggedInUser_MenuBar" runat="server" style="display:none">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>Hi, <asp:Label ID="LoggedInFirstName_MenuBar" CssClass="menubar-name" runat="server" /></li>
+                            <li><asp:LinkButton ID="Logout" runat="server" Text="Logout" OnClick="Logout_Click" /></li>
+                        </ul>
+					</asp:Panel>
+				</div>
+			</nav>
+		</div>
+	</div>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+    </asp:ContentPlaceHolder>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
