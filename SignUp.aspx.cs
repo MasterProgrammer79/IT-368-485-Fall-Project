@@ -87,13 +87,15 @@ namespace LinkedU
             StudentZipValidator.Visible = enabled;
         }
 
-        /*private void SecondStudentPanelSwitch(bool enabled)
+        private void SecondStudentPanelSwitch(bool enabled)
         {
+            /*
             StudentSchoolValidator.Visible = enabled;
             StudentMajorValidator.Visible = enabled;
             StudentGPAValidator.Visible = enabled;
             StudentACTValidator.Visible = enabled;
-        }*/
+             */
+        }
 
         private void RecruiterPanelSwitch(bool enabled)
         {
@@ -152,8 +154,9 @@ namespace LinkedU
             }
         }
 
-        /*protected void NextStudentStep_Click(object sender, EventArgs e)
+        protected void NextStudentStep_Click(object sender, EventArgs e)
         {
+            /*
             if (Page.IsPostBack)
             {
                 Page.Validate();
@@ -165,15 +168,18 @@ namespace LinkedU
                     SecondStudentPanelSwitch(true);
                 }
             }
+             */
         }
 
         protected void EditStudentStep_Click(object sender, EventArgs e)
         {
+            /*
             SecondStudentPanelSwitch(false);
             ActivateStudentPanel2.Attributes.Remove("style");
             ActivateStudentPanel2.Attributes.Add("style", "display:none");
             FirstStudentPanelSwitch(true);
-        }*/
+             */
+        }
 
         private int getUserID(string username)
         {

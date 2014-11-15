@@ -306,7 +306,7 @@
 
                     </p>
                     <asp:Button ID="EditStudentStep" Text="Go Back" CssClass="btn btn-primary" runat="server" OnClick="EditStudentStep_Click" CausesValidation="false" />
-                    <asp:Button ID="CreateNewStudent" Text="Create Account" runat="server" OnClick="CreateNewStudent_Click" />
+                    <asp:Button ID="CreateNewStudent2" Text="Create Account" runat="server" OnClick="CreateNewStudent_Click" />
                 </div>
             </div>
         </asp:Panel> -->
