@@ -20,7 +20,8 @@
             <div class="quick-search">
                 <asp:TextBox ID="QuickSearch" placeholder="Search" CssClass="form-control quick-search-bar" runat="server" />
                 <asp:Button ID="SubmitQuickSearch" Text="Submit" CssClass="btn btn-primary quick-search-button" runat="server" OnClick="SubmitQuickSearch_Click" />
-                <br /><asp:HyperLink ID="AdvanceSearch" NavigateUrl="~/AdvanceSearchForm.aspx" runat="server">Advanced Search</asp:HyperLink>
+                <asp:Panel ID="LoggedInUser_AdvancedSearch" runat="server" style="display:none">
+                <br /><asp:HyperLink ID="AdvanceSearch"  NavigateUrl="~/AdvanceSearchForm.aspx" runat="server">Advanced Search</asp:HyperLink></asp:Panel>
             </div>
 		</div>
 	</div>

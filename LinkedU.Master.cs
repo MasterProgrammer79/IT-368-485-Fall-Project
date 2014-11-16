@@ -17,6 +17,7 @@ namespace LinkedU
             {
                 if (HttpContext.Current.Session["userID"] != null)
                 {
+                    LoggedInUser_AdvancedSearch.Attributes.Remove("style");
                     LoginOrSignUp.Attributes.Add("style", "display:none");
                     LoggedInUser_MenuBar.Attributes.Remove("style");
                     LoggedInFirstName_MenuBar.Text = getFirstName();
