@@ -13,16 +13,25 @@ namespace LinkedU
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!Page.IsPostBack)
             {
                 if (HttpContext.Current.Session["userID"] != null)
                 {
+                    int userID =Convert.ToInt32(HttpContext.Current.Session["userID"]);
                     LoggedInUser_AdvancedSearch.Attributes.Remove("style");
                     LoginOrSignUp.Attributes.Add("style", "display:none");
                     LoggedInUser_MenuBar.Attributes.Remove("style");
                     LoggedInFirstName_MenuBar.Text = getFirstName();
                 }
             }
+        }
+
+        public int getUserID()
+        {
+            int userID = Convert.ToInt32(HttpContext.Current.Session["userID"]);
+           
+            return userID;
         }
 
         protected void SubmitQuickSearch_Click(object sender, EventArgs e)

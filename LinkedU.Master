@@ -20,7 +20,8 @@
             <div class="quick-search">
                 <asp:TextBox ID="QuickSearch" placeholder="Search" CssClass="form-control quick-search-bar" runat="server" />
                 <asp:Button ID="SubmitQuickSearch" Text="Submit" CssClass="btn btn-primary quick-search-button" runat="server" OnClick="SubmitQuickSearch_Click" />
-                <asp:Panel ID="LoggedInUser_AdvancedSearch" runat="server" style="display:none">
+               <%--  <br /><asp:HyperLink ID="AdvanceSearch" NavigateUrl="~/AdvanceSearchForm.aspx" runat="server">Advanced Search</asp:HyperLink>--%>
+            <asp:Panel ID="LoggedInUser_AdvancedSearch" runat="server" style="display:none">
                 <br /><asp:HyperLink ID="AdvanceSearch"  NavigateUrl="~/AdvanceSearchForm.aspx" runat="server">Advanced Search</asp:HyperLink></asp:Panel>
             </div>
 		</div>
@@ -43,8 +44,8 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">View</a></li>
-								<li><a href="#">Edit</a></li>
+								<li><a href="UserViewProfile.aspx?userID=<%=getUserID() %>">View</a></li>
+								<li><a href="UserProfile.aspx">Edit</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
