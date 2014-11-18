@@ -27,39 +27,54 @@
                     <hr />
             <asp:Panel ID="profilePanel1" runat="server">
             <table>  
-                <tr><td>
+                <tr style="padding-bottom:20px"><td>
             Summary: </td>
                <td> <asp:TextBox ID="summaryTxt" runat="server" TextMode="MultiLine" Height="61px" Width="163px" CssClass="form-control"></asp:TextBox>
-           </td></tr>
-                        <tr>
+           </td>
+                   <%-- <td><asp:RequiredFieldValidator ID="UserValidator"
+                        ControlToValidate="summaryTxt"
+                        Display="Dynamic"
+                        ErrorMessage="<strong>Required!</strong>"
+                        ForeColor="Red"
+                        style="padding-left:6px"
+                        runat="server" /></td>--%>
+                </tr>
+                        <tr style="padding-bottom:20px">
                             <td>
                                 <asp:Label ID="Label1" runat="server" Text="School Name"></asp:Label>
                             </td>
-                            <td>
+                            <td style="padding-bottom:20px">
                     <asp:TextBox ID="schoolName" runat="server" CssClass="form-control"></asp:TextBox>
                                 </td>
+                           <%-- <td><asp:RequiredFieldValidator ID="schoolNameRfv"
+                        ControlToValidate="schoolName"
+                        Display="Dynamic"
+                        ErrorMessage="<strong>Required!</strong>"
+                        ForeColor="Red"
+                        style="padding-left:6px"
+                        runat="server" /></td>--%>
                             </tr>
-                        <tr>
+                        <tr style="padding-bottom:20px">
                             <td>
                                 <asp:Label ID="Label2" runat="server" Text="Field of Study"></asp:Label>
                             </td>
-                            <td>
+                            <td style="padding-bottom:20px">
                      <asp:TextBox ID="fieldOfStudy" runat="server" CssClass="form-control"></asp:TextBox>
                             </td></tr>
-                        <tr><td>
+                        <tr ><td>
                                 <asp:Label ID="Label3" runat="server" Text="Major"></asp:Label>
                             </td>
-                            <td>
+                            <td style="padding-bottom:20px">
                      <asp:TextBox ID="major" runat="server" CssClass="form-control"></asp:TextBox>
                            </td> </tr>
-                        <tr>
+                        <tr style="padding-bottom:20px">
                             <td>
                                 <asp:Label ID="Label4" runat="server" Text="Minor"></asp:Label>
                             </td>
-                            <td>
+                            <td style="padding-bottom:20px">
                     <asp:TextBox ID="minor" runat="server" CssClass="form-control"></asp:TextBox>
                           </td>  </tr>
-                    <tr>
+                    <tr style="padding-bottom:20px">
                         <asp:Label ID="saveStatus" runat="server"></asp:Label>
 
                     </tr>
@@ -77,39 +92,39 @@
                     <h2 style="text-align:center">Other Information</h2>
                     <hr />
                     <table>  
-                <tr><td>
+                <tr style="padding-bottom:20px" ><td>
             Cumulative GPA </td>
-                <td><asp:TextBox ID="gpaTxt" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
+                <td style="padding-bottom:20px"><asp:TextBox ID="gpaTxt" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
            </td></tr>
-                        <tr>
+                       <tr style="padding-bottom:20px">
                             <td>
                                 ACT Score
                             </td>
-                            <td>
+                            <td style="padding-bottom:20px">
                     <asp:TextBox ID="actScoreTxt" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
                                 </td>
                             </tr>
-                        <tr>
+                        <tr style="padding-bottom:20px">
                             <td>
                                 SAT Score
                             </td>
-                            <td>
+                            <td style="padding-bottom:20px">
                      <asp:TextBox ID="satScoreTxt" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
                             </td></tr>
-                        <tr><td>
+                        <tr style="padding-bottom:20px"><td>
                                 PSAT Score:
                             </td>
-                            <td>
+                            <td style="padding-bottom:20px">
                      <asp:TextBox ID="psatScoreTxt" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
                            </td> </tr>
-                        <tr>
+                        <tr style="padding-bottom:20px">
                             <td>
                                 Add Your Skills
                             </td>
-                            <td>
+                            <td style="padding-bottom:20px">
                     <asp:TextBox ID="skillsTxt" runat="server"  CssClass="form-control"></asp:TextBox>
                           </td>  </tr>
-                    <tr>
+                    <tr style="padding-bottom:20px">
                         <asp:Label ID="savestatus2" runat="server"></asp:Label>
 
                     </tr>
@@ -166,8 +181,34 @@
                                 Mix Tape of Activities
                             </td>
                             <td>
-                             <asp:FileUpload ID="uploadVideo" runat="server" />
-                          </td>  </tr>
+                                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                          </td>
+                            <td><asp:Button ID="btnAddLink"
+             runat="server" Text="Add Link" OnClick="btnAddLink_Click" CssClass="btn btn-primary"/>  </td>
+                        </tr>
+                         <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:ProjectDB %>" 
+        SelectCommand="SELECT [url], [description], [userID] FROM [YouTubeVideos]">
+    </asp:SqlDataSource>--%>
+                       <tr><asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+    <ItemTemplate>
+    <object width="480" height="385"><param name="movie" value='<%#DataBinder.Eval(Container.DataItem, "url") %>'></param>
+    <param name="allowFullScreen" value="true"></param>
+    <param name="allowscriptaccess" value="always"></param>
+    <embed src='<%#DataBinder.Eval(Container.DataItem, "url") %>' type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385">
+    </embed>
+    </object>
+    <br />    
+    </ItemTemplate>
+    </asp:Repeater>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:ProjectDB %>"
+                                 
+        SelectCommand="SELECT [url], [description] FROM [YouTubeVideos] WHERE ([userID] = @userID)">
+                                <SelectParameters>
+                                    <asp:SessionParameter Name="userID" SessionField="userID" Type="Int32" />
+                                </SelectParameters>
+    </asp:SqlDataSource></tr>
                     <tr>
                         <asp:Label ID="Label5" runat="server"></asp:Label>
 

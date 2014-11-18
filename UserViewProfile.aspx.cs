@@ -108,6 +108,12 @@ namespace LinkedU
 
         }
 
+        public int getuserID()
+        {
+            int uid = Convert.ToInt32(HttpContext.Current.Session["userID"]);
+            return uid;
+        }
+
         protected string getFirstName()
         {
             SqlConnection dbConnection = new SqlConnection(WebConfigurationManager.ConnectionStrings["ProjectDB"].ConnectionString);

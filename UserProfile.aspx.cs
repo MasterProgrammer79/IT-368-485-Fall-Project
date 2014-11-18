@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Web.Configuration;
 using System.IO;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace LinkedU
 {
@@ -39,6 +40,73 @@ namespace LinkedU
                    
                 }
             }
+        }
+
+        public int getuserID()
+        {
+            int uid = Convert.ToInt32(HttpContext.Current.Session["userID"]);
+            return uid;
+        }
+
+        private string GetYouTubeID(string youTubeUrl)
+        {
+            //RegEx to Find YouTube ID
+            Match regexMatch = Regex.Match(youTubeUrl, "^[^v]+v=(.{11}).*",
+                               RegexOptions.IgnoreCase);
+            if (regexMatch.Success)
+            {
+                return "http://www.youtube.com/v/" + regexMatch.Groups[1].Value +
+                       "&hl=en&fs=1";
+            }
+            return youTubeUrl;
+        }
+
+        protected void btnAddLink_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ProjectDB"].ToString());
+            string url = TextBox1.Text;
+            if (url.Contains("youtube.com"))
+            {
+                string ytFormattedUrl = GetYouTubeID(url);
+                int uid = Convert.ToInt32(HttpContext.Current.Session["userID"]);
+                if (!CheckDuplicate(ytFormattedUrl))
+                {
+                   
+                    SqlCommand cmd = new SqlCommand("INSERT INTO YouTubeVideos (userID,[url]) VALUES ("+uid+",'" + ytFormattedUrl + "')", con);
+                    using (con)
+                    {
+                        con.Open();
+                        int result = cmd.ExecuteNonQuery();
+                        if (result != -1)
+                        {
+                            Repeater1.DataBind();
+                        }
+                        else { Response.Write("Error inserting new url!"); }
+                    }
+                }
+                else { Response.Write("This video already exists in our database!"); }
+            }
+            else
+            {
+                Response.Write("This URL is not a valid YOUTUBE video link because it does not contain youtube.com in it");
+            }
+        }
+
+        public bool CheckDuplicate(string youTubeUrl)
+        {
+            bool exists = false;
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ProjectDB"].ToString());
+            SqlCommand cmd = new SqlCommand(String.Format("select * from YouTubeVideos where url='{0}'", youTubeUrl), con);
+
+            using (con)
+            {
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                dr.Read();
+                exists = (dr.HasRows) ? true : false;
+            }
+
+            return exists;
         }
 
         protected void saveButtonStep1_Click(object sender, EventArgs e)
