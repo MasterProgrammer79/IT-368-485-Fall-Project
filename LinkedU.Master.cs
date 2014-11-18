@@ -20,6 +20,7 @@ namespace LinkedU
                     int userID = Convert.ToInt32(HttpContext.Current.Session["userID"]);
                     LoggedInUser_AdvancedSearch.Attributes.Remove("style");
                     LoginOrSignUp.Attributes.Add("style", "display:none");
+                    LoggedInUser_ProfileLink.Attributes.Remove("style");
                     LoggedInUser_MenuBar.Attributes.Remove("style");
                     LoggedInFirstName_MenuBar.Text = getFirstName();
                    
@@ -46,19 +47,12 @@ namespace LinkedU
                         {
                             Label1.Text = Label1.Text + "<br />" + item;
                             //Notifications.Text = Notifications.Text + item;
-
                         }
-
                     }
                     else {
                         Notificationslabel.Text = "No New Notifications";
                         Notificationslabel.ForeColor = System.Drawing.Color.White;
-                        
                     }
- 
-                    
-
-
                 }
             }
         }

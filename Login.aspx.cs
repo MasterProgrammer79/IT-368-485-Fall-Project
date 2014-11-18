@@ -20,6 +20,7 @@ namespace LinkedU
                     Response.Redirect("Default.aspx");
                 }
             }
+            this.Form.DefaultButton = this.UserLogin.UniqueID;
         }
 
         protected void UserLogin_Click(object sender, EventArgs e)

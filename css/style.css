@@ -112,6 +112,22 @@ body {
 .big-right,.small-right {
 	margin-left: 1%;
 }
+.menubar-profile {
+    float: left;
+}
+.menubar-profile li,.menubar-profile>li>a {
+    color: #f0f0f0;
+    padding: 14px 15px;
+    font-weight: bold;
+}
+.menubar-profile>li>a:hover {
+    color: #f0f0f0;
+    background-color: #4472c4;
+}
+.menubar-profile>li>a:active {
+    color: #f0f0f0;
+    background-color: #454545;
+}
 .menubar-name {
     padding: 14px 15px;
     color: #ff0000;

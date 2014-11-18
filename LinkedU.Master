@@ -12,90 +12,69 @@
 </head>
 <body>
     <form id="form1" runat="server">
-	<div class="banner">
-		<div class="container">
-            <div class="logo">
-    			<asp:HyperLink ID="LogoHome" NavigateUrl="~/Default.aspx" runat="server"><img src="images/logo.png" /></asp:HyperLink>
-            </div>
-            <div class="quick-search">
-                <asp:TextBox ID="QuickSearch" placeholder="Search" CssClass="form-control quick-search-bar" runat="server" />
-                <asp:Button ID="SubmitQuickSearch" Text="Submit" CssClass="btn btn-primary quick-search-button" runat="server" OnClick="SubmitQuickSearch_Click" />
-                <%--  <br /><asp:HyperLink ID="AdvanceSearch" NavigateUrl="~/AdvanceSearchForm.aspx" runat="server">Advanced Search</asp:HyperLink>--%>
-            <asp:Panel ID="LoggedInUser_AdvancedSearch" runat="server" style="display:none" ><br /><asp:HyperLink ID="AdvanceSearch"  NavigateUrl="~/AdvanceSearchForm.aspx" runat="server">Advanced Search</asp:HyperLink></asp:Panel> 
-            </div>
-		</div>
-	</div>
-	<div class="banner">
-		<div class="container">
-			<nav class="navbar navbar-default" role="navigation">
-				<div class="container-fluid">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#project-navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
-				<div class="collapse navbar-collapse" id="project-navbar">
-					<ul class="nav navbar-nav">
-						<li><asp:HyperLink ID="MenuHome" NavigateUrl="~/Default.aspx" runat="server">Home</asp:HyperLink></li>
-						<li><a href="#">Search</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Profile <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="UserViewProfile.aspx?userID=<%=getUserID() %>">View</a></li>
-								<li><a href="UserProfile.aspx">Edit</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">General Settings</a></li>
-								<li><a href="#">Privacy Settings</a></li>
-								<li><a href="#">Profile Settings</a></li>
-							</ul>
-						</li>
-					</ul>
-                    <asp:Panel ID="LoginOrSignUp" runat="server">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><asp:HyperLink ID="Login" NavigateUrl="~/Login.aspx" runat="server">Login</asp:HyperLink></li>
-						    <li><asp:HyperLink ID="SignUp" NavigateUrl="~/SignUp.aspx" runat="server">Sign Up</asp:HyperLink></li>
-                        </ul>
-                    </asp:Panel>
-					<asp:Panel ID="LoggedInUser_MenuBar" runat="server" style="display:none">
-                        <ul class="nav navbar-nav navbar-right">
-
-                            <li class="menubar-name">Hi, <asp:Label ID="LoggedInFirstName_MenuBar" runat="server" /></li>
-                            <li><asp:LinkButton ID="Logout" runat="server" Text="Logout" OnClick="Logout_Click" /></li>
-
-
-
-                        </ul>
-                        <ul>
-
-                        
-                            
-                           <li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><li class="menubar-name">
-                              
-                                 <asp:Label ID="Notificationslabel" runat="server"   />
-                                    <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">
-                                    <asp:Label ID="Label1" runat="server" ></asp:Label></a></li>
-								
-							</ul>
-						</li>
-                        <%-- </li>--%>
+	    <div class="banner">
+		    <div class="container">
+                <div class="logo">
+    			    <asp:HyperLink ID="LogoHome" NavigateUrl="~/Default.aspx" runat="server"><img src="images/logo.png" /></asp:HyperLink>
+                </div>
+                <div class="quick-search">
+                    <asp:TextBox ID="QuickSearch" placeholder="Search" CssClass="form-control quick-search-bar" runat="server" />
+                    <asp:Button ID="SubmitQuickSearch" Text="Submit" CssClass="btn btn-primary quick-search-button" runat="server" OnClick="SubmitQuickSearch_Click" />
+                    <%--  <br /><asp:HyperLink ID="AdvanceSearch" NavigateUrl="~/AdvanceSearchForm.aspx" runat="server">Advanced Search</asp:HyperLink>--%>
+                    <asp:Panel ID="LoggedInUser_AdvancedSearch" runat="server" style="display:none" ><br /><asp:HyperLink ID="AdvanceSearch"  NavigateUrl="~/AdvanceSearchForm.aspx" runat="server">Advanced Search</asp:HyperLink></asp:Panel> 
+                </div>
+		    </div>
+	    </div>
+	    <div class="banner">
+		    <div class="container">
+			    <nav class="navbar navbar-default" role="navigation">
+				    <div class="container-fluid">
+					    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#project-navbar">
+						    <span class="sr-only">Toggle navigation</span>
+						    <span class="icon-bar"></span>
+						    <span class="icon-bar"></span>
+						    <span class="icon-bar"></span>
+					    </button>
+				    </div>
+				    <div class="collapse navbar-collapse" id="project-navbar">
+					    <ul class="nav navbar-nav">
+						    <li><asp:HyperLink ID="MenuHome" NavigateUrl="~/Default.aspx" runat="server">Home</asp:HyperLink></li>
+                            <li class="dropdown">
+							    <asp:HyperLink ID="LoggedInUser_ProfileLink" NavigateUrl="#" CssClass="dropdown-toggle" data-toggle="dropdown" style="display:none" runat="server">Profile <span class="caret"></span></asp:HyperLink>
+							    <ul class="dropdown-menu" role="menu">
+								    <li><a href="UserViewProfile.aspx?userID=<%=getUserID() %>">View</a></li>
+								    <li><a href="UserProfile.aspx">Edit</a></li>
+							    </ul>
+						    </li>
+					    </ul>
+                        <asp:Panel ID="LoginOrSignUp" runat="server">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><asp:HyperLink ID="Login" NavigateUrl="~/Login.aspx" runat="server">Login</asp:HyperLink></li>
+						        <li><asp:HyperLink ID="SignUp" NavigateUrl="~/SignUp.aspx" runat="server">Sign Up</asp:HyperLink></li>
                             </ul>
-					</asp:Panel>
-				</div>
-			</nav>
-		</div>
-	</div>
-    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:Panel>
+					    <asp:Panel ID="LoggedInUser_MenuBar" runat="server" style="display:none">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="menubar-name">Hi, <asp:Label ID="LoggedInFirstName_MenuBar" runat="server" /></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <asp:Label ID="Notificationslabel" runat="server"   />
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+								        <li><a href="#"><asp:Label ID="Label1" runat="server" ></asp:Label></a></li>
+    							    </ul>
+                                </li>
+                                <li><asp:LinkButton ID="Logout" runat="server" Text="Logout" OnClick="Logout_Click" /></li>
+                            </ul>
+					    </asp:Panel>
+				    </div>
+			    </nav>
+		    </div>
+	    </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
-    </asp:ContentPlaceHolder>
+        </asp:ContentPlaceHolder>
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
