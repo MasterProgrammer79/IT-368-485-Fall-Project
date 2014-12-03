@@ -238,7 +238,7 @@ namespace LinkedU
                             Response.Write("<p>Error Code " + ex.Number + ": " + ex.Message + "</p>");
                         }
                         int uid = getUserID(Username.Text);
-                        string newStudentQuery = "insert into studentPersonal values (@uid, @fname, @lname, @email, @phone, @address, @state, @city, @zip)";
+                        string newStudentQuery = "insert into studentPersonal values (@uid, @fname, @lname, @email, @phone, @address, @state, @city, @zip, @subscribe)";
                         try
                         {
                             SqlCommand addNewStudent = new SqlCommand(newStudentQuery, dbConnection);
@@ -251,6 +251,7 @@ namespace LinkedU
                             addNewStudent.Parameters.Add(new SqlParameter("@state", StudentState.SelectedValue.ToString()));
                             addNewStudent.Parameters.Add(new SqlParameter("@city", StudentCity.Text));
                             addNewStudent.Parameters.Add(new SqlParameter("@zip", StudentZip.Text));
+                            addNewStudent.Parameters.Add(new SqlParameter("@subscribe", 1));
                             addNewStudent.ExecuteNonQuery();
                             HttpContext.Current.Session["userID"] = uid;
                             Response.Redirect("Default.aspx");
@@ -295,7 +296,7 @@ namespace LinkedU
                             Response.Write("<p>Error Code " + ex.Number + ": " + ex.Message + "</p>");
                         }
                         int uid = getUserID(Username.Text);
-                        string newRecruiterQuery = "insert into recruiter values (@uid, @fname, @lname, @email)";
+                        string newRecruiterQuery = "insert into recruiter values (@uid, @fname, @lname, @email, @subscribe)";
                         try
                         {
                             SqlCommand addNewRecruiter = new SqlCommand(newRecruiterQuery, dbConnection);
@@ -303,6 +304,7 @@ namespace LinkedU
                             addNewRecruiter.Parameters.Add(new SqlParameter("@fname", RecruiterFirstName.Text));
                             addNewRecruiter.Parameters.Add(new SqlParameter("@lname", RecruiterLastName.Text));
                             addNewRecruiter.Parameters.Add(new SqlParameter("@email", RecruiterEmail.Text));
+                            addNewRecruiter.Parameters.Add(new SqlParameter("@subscribe", 1));
                             addNewRecruiter.ExecuteNonQuery();
                             HttpContext.Current.Session["userID"] = uid;
                             Response.Redirect("Default.aspx");
